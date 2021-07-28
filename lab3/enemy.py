@@ -76,8 +76,8 @@ class EnemyGroup:
         self.gen_count = 0
         self.gen_period = 120   # (unit: frame)
         self.reserved_members = []
-        self.expedition = [Enemy()]  # don't change this line until you do the EX.3 
-        self.path_ctrl = False  #控制哪一條路徑
+        self.expedition = []  # don't change this line until you do the EX.3 
+        self.path_ctrl = True  #控制哪一條路徑
     def campaign(self):
         """
         Send an enemy to go on an expedition once 120 frame
@@ -89,7 +89,7 @@ class EnemyGroup:
         
         if self.gen_count >= self.gen_period and not self.is_empty():   #時間到且有怪物待產生
             self.expedition.append(self.reserved_members.pop())     #新增怪物
-            print('app')
+            #print('app') #產生於螢幕上
             self.gen_count = 0
             
         else:
