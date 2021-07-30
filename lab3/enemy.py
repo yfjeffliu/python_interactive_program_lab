@@ -1,7 +1,7 @@
 import pygame
 import math
 import os
-from settings import PATH1, RED , PATH2
+from settings import PATH1, RED , PATH2,GREEN
 
 pygame.init()
 ENEMY_IMAGE = pygame.image.load(os.path.join("images", "enemy.png"))
@@ -34,7 +34,8 @@ class Enemy:
         :return: None
         """
         # ...(to be done)
-        pygame.draw.rect(win, RED, [self.x - self.width // 2, self.y - self.height // 2 -8, 40*self.health/self.max_health, 8]) #色碼,X點、Y點、寬、高
+        pygame.draw.rect(win, RED, [self.x - self.width // 2, self.y - self.height // 2 -8, 40, 8]) #色碼,X點、Y點、寬、高
+        pygame.draw.rect(win, RED, [GREEN - self.width // 2, self.y - self.height // 2 -8, 40*self.health/self.max_health, 8]) #色碼,X點、Y點、寬、高
         pass
 
     def move(self):
