@@ -1,9 +1,9 @@
 import pygame
 import os
-from enemy import EnemyGroup
-from tower import TowerGroup
-from settings import WIN_WIDTH, WIN_HEIGHT, FPS
-from color_settings import *
+from enemy.enemy_group import EnemyGroup
+from tower.tower_group import TowerGroup
+from settings import WIN_WIDTH, WIN_HEIGHT
+
 # load image
 BACKGROUND_IMAGE = pygame.image.load(os.path.join("images", "Map.png"))
 HP_IMAGE = pygame.image.load(os.path.join("images", "hp.png"))
@@ -21,7 +21,7 @@ class Game:
         self.money = 100
         self.enemies = EnemyGroup()
         self.towers = TowerGroup()
-        self.choose = 0
+
     def draw(self):
         """
         Draw everything in this method.
@@ -33,10 +33,8 @@ class Game:
         self.enemies.draw(self.win)
         # draw towers
         self.towers.draw(self.win)
-        
         pygame.display.update()
-    
-        
+
     def update(self):
         game_quit = False
         # event loop
@@ -51,10 +49,11 @@ class Game:
                     self.enemies.add(10)  # generate  10 enemy for the next wave
             # player click action
             if event.type == pygame.MOUSEBUTTONDOWN:
-                self.towers.get_click(mouse_x, mouse_y)
+                self.towers.got_click(mouse_x, mouse_y)
 
         # update tower action
         self.towers.update(self.enemies)
         # update enemy action
         self.enemies.update()
         return game_quit
+

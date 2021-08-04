@@ -3,7 +3,6 @@ import pygame
 # screen size
 WIN_WIDTH = 1024
 WIN_HEIGHT = 600
-
 # frame rate
 FPS = 60
 # color
